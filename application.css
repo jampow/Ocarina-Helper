@@ -1,19 +1,33 @@
+body {
+  font-family: arial;
+}
+
 .note {
   width: 30px;
-  height: 30px;
+  height: 45px;
   border: 2px #4f6ab4 solid;
   line-height: 0;
   margin: 1px;
   display: inline-block;
 }
 
-.note span {
+.note span.finger {
   width: 11px;
   height: 11px;
   border: 1px #4f6ab4 solid;
   margin: 1px;
   padding: 0;
   display: inline-block;
+}
+
+.note span.noteName {
+  width: 30px;
+  height: 15px;
+  text-align: center;
+  padding: 1px;
+  display: inline-block;
+  font-size: 10px;
+  line-height: 1em;
 }
 
 .note span.true {

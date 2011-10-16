@@ -1,4 +1,4 @@
-var notes = ['dó', 'ré', 'mi', 'fá', 'sol', 'lá', 'si'];
+var notes = ['C','C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 var seq = {
   "_1":  [0,1,0,1],
   "_2":  [1,0,0,0],
@@ -16,16 +16,48 @@ var seq = {
   "_14": [0,0,0,1],
   "_15": [0,1,0,0],
   "_16": [0,0,0,0]
-}
+};
+
+var mode = {
+  //Ionian
+  "i": [-5, -4, -3, -2, -1, 0, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+};
 
 $(function(){
-  $('.note').each(function(){
-    var t = $(this);
-    var schema = eval('seq._'+t.attr('val'));
+  $('#Ok').bind('click', showScale);
+});
+
+function getNote(scale, prop) {
+  var sclIdx = $.inArray(scale, notes);//Scale Index
+  var realProp = sclIdx + prop;
+  var note;
+  if (realProp < 0) {
+    note =  notes[12 + realProp];
+  } else if (realProp > 11) {
+    note = notes[realProp - 12];
+  } else {
+    note = notes[realProp];
+  }
+  return note;
+}
+
+function showScale(){
+  var scale     = $('#scale').val();
+  var pattern   = eval('mode.'+$('#mode' ).val());
+  var container = $('#container');
+
+  container.text('');
+
+  $.each(seq, function(idx, val){
+    var v = idx.substr(1);
+    var t = $('<div/>').addClass('note').attr('val', v);
+    var schema = val;
     for (i = 0; i < 4; i++) {
       var sp = schema[i] == 1 ? $('<span/>').addClass('true') : $('<span/>');
-      t.append(sp);
+      t.append(sp.addClass('finger'));
     }
+    t.append($('<span/>').addClass('noteName').text(getNote(scale, pattern[v-1])));
+    t.appendTo(container);
   });
-});
+}
 
