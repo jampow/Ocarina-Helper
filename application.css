@@ -1,0 +1,22 @@
+.note {
+  width: 30px;
+  height: 30px;
+  border: 2px #4f6ab4 solid;
+  line-height: 0;
+  margin: 1px;
+  display: inline-block;
+}
+
+.note span {
+  width: 11px;
+  height: 11px;
+  border: 1px #4f6ab4 solid;
+  margin: 1px;
+  padding: 0;
+  display: inline-block;
+}
+
+.note span.true {
+  background-color: #8ddaf8;
+}
+
