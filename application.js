@@ -37,10 +37,6 @@ var mode = {
   "z":  [-5, 14, 15,  3, -1, 0, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 };
 
-$(function(){
-  $('#Ok').bind('click', showScale);
-});
-
 function getNote(scale, prop) {
   var sclIdx = $.inArray(scale, notes);//Scale Index
   var realProp = sclIdx + prop;
@@ -56,8 +52,9 @@ function getNote(scale, prop) {
 }
 
 function showScale(){
-  var scale     = $('#scale').val();
-  var pattern   = eval('mode.'+$('#mode' ).val());
+  var scale     = $('#scale_container input:checked').val();
+  var mode_sel  = $('#mode_container input:checked').val();
+  var pattern   = eval('mode.'+mode_sel);
   var container = $('#container');
 
   container.text('');
@@ -74,4 +71,11 @@ function showScale(){
     t.appendTo(container);
   });
 }
+
+$(function(){
+//  $('#Ok').bind('click', showScale);
+
+  $('.controls').buttonset()
+  $('input[type=radio]').click(showScale);
+});
 

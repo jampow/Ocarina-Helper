@@ -1,5 +1,6 @@
 body {
   font-family: arial;
+  font-size: 10px;
 }
 
 .note {
@@ -35,3 +36,4 @@ body {
 .note span.true {
   background-color: #8ddaf8;
 }
+
