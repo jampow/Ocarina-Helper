@@ -41,13 +41,16 @@ function getNote(scale, prop) {
   var sclIdx = $.inArray(scale, notes);//Scale Index
   var realProp = sclIdx + prop;
   var note;
-  if (realProp < 0) {
-    note =  notes[12 + realProp];
-  } else if (realProp > 11) {
-    note = notes[realProp - 12];
-  } else {
-    note = notes[realProp];
+
+  while (realProp < 0 || realProp > 11) {
+    if (realProp < 0) {
+      realProp = 12 + realProp;
+    } else if (realProp > 11) {
+      realProp = realProp - 12;
+    }
   }
+
+  note = notes[realProp];
   return note;
 }
 
