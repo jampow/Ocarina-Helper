@@ -37,3 +37,13 @@ body {
   background-color: #8ddaf8;
 }
 
+section {
+  width:600px;
+  margin: 5px auto;
+  padding: 5px;
+}
+
+.controls {
+  margin: 10px auto;
+}
+
